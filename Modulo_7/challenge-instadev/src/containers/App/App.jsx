@@ -1,18 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Topbar from '../../components/Topbar';
+import TopBar from '../../components/Topbar';
 
 import Routes from '../../routes';
 
 import './App.scss';
 
 const App = () => (
-  <div>
+  <div data-testid="app">
     <Router>
-      <Topbar />
+      <TopBar />
       <Routes />
-      
     </Router>
   </div>
 );

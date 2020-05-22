@@ -7,11 +7,21 @@ import { ReactComponent as LogoSvg } from '../../assets/img/instagram-logo.svg';
 import './Topbar.scss';
 
 const Topbar = () => (
-  <header className="topbar">
-    <div className="topbar__logo">
-      <LogoSvg />
-    </div>
+  <header className="topbar" data-testid="topbar">
     <div className="container">
+      <div className="topbar__logo">
+        <LogoSvg />
+      </div>
+
+      <div className="top-bar__group">
+      <Link to="/users">
+          <button className="top-bar__icon">
+            <i className="fas fa-users" />
+            <span>Usuários</span>
+          </button>
+        </Link>
+
+      </div>
       <div className="topbar__icon">
         <Link to="/">Home</Link>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'; //para usar as rotas no React
 
+//páginas do App
 import FeedRoute from './FeedRoute';
 import UsersRoute from './UsersRoute';
 import ProfileRoute from './ProfileRoute';
@@ -8,18 +9,20 @@ import NewUserRoute from './NewUserRoute';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={FeedRoute} />
-
-    <Route exact path="/users" component={UsersRoute}>
-
+    <Route exact path="/">
+      <FeedRoute/>
     </Route>
 
-    <Route path="/users/:username"  component={ProfileRoute}>
-
+    <Route exact path="/users">
+      <UsersRoute />
     </Route>
 
-    <Route path="/newuser"  component={NewUserRoute}>
+    <Route path="/users/:username">
+      <ProfileRoute />
+    </Route>
 
+    <Route path="/newuser">
+      <NewUserRoute />
     </Route>
   </Switch>
 );
