@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Topbar from '../../components/Topbar';
 
@@ -9,6 +9,11 @@ import './App.scss';
 
 const App = () => (
   <div>
+    <Router>
+      <Topbar />
+      <Routes />
+      
+    </Router>
   </div>
 );
 

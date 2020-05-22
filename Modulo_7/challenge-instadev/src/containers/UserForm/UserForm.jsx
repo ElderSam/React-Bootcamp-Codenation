@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import SuccessMessage from '../../components/SuccessMessage';
+//import SuccessMessage from '../../components/SuccessMessage';
 
 import './UserForm.scss';
 

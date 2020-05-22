@@ -5,7 +5,7 @@ import Story from '../../components/Story';
 import './Stories.scss';
 
 const Stories = ({ stories, getUserHandler }) => {
-  return (
+  /*return (
     <React.Fragment>
       <section className="stories">
         <div className="container">
@@ -16,7 +16,7 @@ const Stories = ({ stories, getUserHandler }) => {
         <Story />
         )}
     </React.Fragment>
-  );
+  );*/
 };
 
 export default Stories;
