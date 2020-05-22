@@ -6,37 +6,30 @@ import { ReactComponent as LogoSvg } from '../../assets/img/instagram-logo.svg';
 
 import './Topbar.scss';
 
-const Topbar = () => (
+const TopBar = () => (
   <header className="topbar" data-testid="topbar">
     <div className="container">
-      <div className="topbar__logo">
-        <LogoSvg />
-      </div>
+      <Link to="/" className="topbar__logo">
+        <LogoSvg alt="Instagram logo" />
+      </Link>
 
-      <div className="top-bar__group">
-      <Link to="/users">
-          <button className="top-bar__icon">
+      <div className="topbar__group">
+        <Link to="/users">
+          <button className="topbar__icon">
             <i className="fas fa-users" />
             <span>Usuários</span>
           </button>
         </Link>
 
+        <Link to="/newuser">
+          <button className="topbar__icon">
+            <i className="fas fa-user-plus" />
+            <span>Nova Conta</span>
+          </button>
+        </Link>
       </div>
-      <div className="topbar__icon">
-        <Link to="/">Home</Link>
-      </div>
-      <div className="topbar__icon">
-        <Link to="/users">Usuários</Link>
-      </div>
-      <div className="topbar__icon">
-        <Link to="/users/1">teste Usuário 1</Link>
-      </div>
-      <div className="topbar__icon">
-        <Link to="/newuser">Novo Usuário</Link>
-      </div>
-      
     </div>
   </header>
 );
 
-export default Topbar;
+export default TopBar;

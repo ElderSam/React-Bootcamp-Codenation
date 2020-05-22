@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import avatarFallback from '../../assets/img/profile-placeholder.png';
+import avatarFallback from '../../assets/img/instagram-glyph.png';
 import { Link } from 'react-router-dom';
 
 const User = ({ avatar, name, username }) => {

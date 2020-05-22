@@ -6,53 +6,46 @@ import './Stories.scss';
 
 const Stories = ({ stories, getUserHandler }) => {
   //definição de atributos e sets
-  const [showStory, toggleShowStory] = useState(false);
-  const [selectedStory, setSelectedHistory] = useState({});
-  const [selectedProfile, setSelectedProfile] = useState({});
-  
-  const findStoryById = (id) => stories.find(story => story.id === id);
+  const [selectedStory, setSelectedStory] = useState(null);
 
-  const handleStory = (story) => {
-    const foundStory = findStoryById(story.id); //filtra os stories pelo id do usuáiro
-    const profileData = getUserHandler(story.userId);
-    //console.log(profileData);
-
-    setSelectedProfile(profileData);
-    setSelectedHistory(foundStory);
-    toggleShowStory(!showStory);
+  const handleStorySelection = (story, user) => {
+    setSelectedStory({ story, user });
   };
 
+  const handleStoryClosing = () => {
+    setSelectedStory(null);
+  };
+
+  
   return (
-    <React.Fragment>
+    <>
       <section className="stories" data-testid="stories">
-        <div className="container">
-          {stories.map((story, index) => { //percorre o array de stories, e faz o mesmo para cada item
-            //const profileData = getUserHandler(story.userId); //pega os dados do usuário
-            //console.log(profileData.avatar)
-            
-            return(
+        <nav className="container">
+          {stories.map((story, idx) => {
+            const user = getUserHandler(story.userId);
+            return (
               <button
-                key={story.id}
-                onClick={() => handleStory(story)}
-                className={`user__thumb ${index === 0 && 'user__thumb--hasNew'}`}
+                key={`story-${story.id}`}
+                onClick={() => handleStorySelection(story, user)}
+                className={`user__thumb ${idx === 0 && 'user__thumb--hasNew'}`}
               >
                 <div className="user__thumb__wrapper">
-                  <img src='' alt='exemplo' />
+                  <img src={user.avatar} alt={user.name} />
                 </div>
               </button>
-            )})
-          }
-        </div>
+            );
+          })}
+        </nav>
       </section>
 
-      {showStory && ( //se for true
-        <Story 
-          story={selectedStory}
-          user={selectedProfile}
-          handleClose={() => toggleShowStory(!showStory)}
+      {selectedStory && (
+        <Story
+          story={selectedStory.story}
+          user={selectedStory.user}
+          handleClose={handleStoryClosing}
         />
-        )}
-    </React.Fragment>
+      )}
+    </>
   );
 };
 
