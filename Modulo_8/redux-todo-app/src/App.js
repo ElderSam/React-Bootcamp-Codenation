@@ -3,43 +3,48 @@ import "./styles.css";
 
 import Item from "./components/Item";
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
+
+import {
+  getTodos,
+  setTodo,
+  setTodos,
+  deleteTodo,
+  setEditing,
+  setTodosEditing
+} from './actions';
 
 export default function App(){
-  const [todo, setTodo] = React.useState(""); //tarefa
-  const [isEditing, setisEditing] = React.useState(-1); //se está editando
-  const [todos, setTodos] = React.useState([]); //lista de tarefas
 
-  const store = useSelector(state => state) //conecta seu componente a store com o useSelector
-  //console.log(store)
-  console.log(store)
+  const dispatch = useDispatch(); //esse dispatch vai permitir com que a minha action chegue na store
+
+  const { todo, todos, isEditing } = useSelector(state => state) //conecta seu componente a store com o useSelector
+  //console.log(store);
+
+  React.useEffect(() => {
+    dispatch(getTodos())
+  }, [dispatch]) //usando o didMount (quando é mountado o componente, renderizado)
 
   const handleSubmit = event => { //função para atualizar a tarefa
     event.preventDefault(); //impede atualizar a página
 
     if(isEditing > 0){ //se está editando uma tarefa
-      setTodos( //muda o conteúdo da lista de tarefas
-        todos.map((t, i) => { //mapeia o array de todos, cria um novo array 
-          if(i === isEditing){ //se o item do array for o que está editando
-            return todo; //então atualiza na listagem com o item modificado
-          }
-          return t; //senão, então retorna o item original
-        })
-      );
-      setisEditing(-1);
+      dispatch(setTodosEditing())
+      dispatch(setEditing(-1));
+
     }else{
-      setTodos([...todos, todo]); 
+      dispatch(setTodos()); 
     }
 
-    setTodo(""); //limpa o campo do input
+    dispatch(setTodo("")); //limpa o campo do input
   };
 
-  const handleChange = event => setTodo(event.target.value); //o nome da tarefa recebe o novo valor digitado
+  const handleChange = event => dispatch(setTodo(event.target.value)); //o nome da tarefa recebe o novo valor digitado. O dispatch muda o valor na store
   const handleEdit = index => {
-    setTodo(todos[index]);
-    setisEditing(index);
+    dispatch(setTodo(todos[index]));
+    dispatch(setEditing(index));
   };
-  const handleDelete = index => setTodos(todos.filter((_, i) => i !== index));
+  const handleDelete = index => dispatch(deleteTodo(index));
 
   return (
     <div className="App">
