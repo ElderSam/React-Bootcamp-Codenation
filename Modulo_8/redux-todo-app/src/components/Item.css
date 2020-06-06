@@ -1,0 +1,25 @@
+.item {
+    border: 1px solid #eee;
+    margin-bottom: 5px;
+    display: flex;
+  }
+  
+  .item li {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .item .buttons {
+    display: flex;
+  }
+  
+  .buttons button:first-child {
+    background-color: cornflowerblue;
+    color: white;
+  }
+  
+  .buttons button:last-child {
+    background-color: red;
+    color: white;
+  }
+  

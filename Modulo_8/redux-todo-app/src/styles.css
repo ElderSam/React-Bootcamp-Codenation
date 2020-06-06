@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: sans-serif;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form button {
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 5px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.todos {
+  list-style: none;
+  padding: 0;
+}
