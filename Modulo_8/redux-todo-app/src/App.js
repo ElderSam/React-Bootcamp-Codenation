@@ -3,10 +3,16 @@ import "./styles.css";
 
 import Item from "./components/Item";
 
+import {useSelector} from 'react-redux';
+
 export default function App(){
   const [todo, setTodo] = React.useState(""); //tarefa
   const [isEditing, setisEditing] = React.useState(-1); //se está editando
   const [todos, setTodos] = React.useState([]); //lista de tarefas
+
+  const store = useSelector(state => state) //conecta seu componente a store com o useSelector
+  //console.log(store)
+  console.log(store)
 
   const handleSubmit = event => { //função para atualizar a tarefa
     event.preventDefault(); //impede atualizar a página
